@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_15ff1a93f868b444b9b40bf961c458b9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+     <div style="position: fixed; 
+                 bottom: 50px; left: 50px; width: 150px; height: 90px; 
+                 border:2px solid grey; z-index:9999; font-size:14px;
+                 background-color:white;
+                 opacity:0.85">
+         <div style="padding:5px">
+             <i class="fa fa-play fa-2x" style="color:green"></i> Start<br>
+             <i class="fa fa-hospital fa-2x" style="color:red"></i> Destination<br>
+             <i class="fa fa-circle" style="color:lightblue"></i> Cluster
+         </div>
+     </div>
+    
+            <div class="folium-map" id="map_15ff1a93f868b444b9b40bf961c458b9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_15ff1a93f868b444b9b40bf961c458b9 = L.map(
+                "map_15ff1a93f868b444b9b40bf961c458b9",
+                {
+                    center: [51.51833333333333, -2.5652777777777778],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f3d8371b7556b47e7136d42bc55b9724 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f3d8371b7556b47e7136d42bc55b9724.addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var marker_779f3b9291d96aaef0f8f5931fe9f685 = L.marker(
+                [51.51833333333333, -2.5652777777777778],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_26bcc5aeb5b8c47849cd2871f79387fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2f0c073f50f8228b373490249b90df10 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6d2fc49dfb07d71974811f166e4ea8c9 = $(`<div id="html_6d2fc49dfb07d71974811f166e4ea8c9" style="width: 100.0%; height: 100.0%;">NHS Blood Centre (Filton)</div>`)[0];
+                popup_2f0c073f50f8228b373490249b90df10.setContent(html_6d2fc49dfb07d71974811f166e4ea8c9);
+            
+        
+
+        marker_779f3b9291d96aaef0f8f5931fe9f685.bindPopup(popup_2f0c073f50f8228b373490249b90df10)
+        ;
+
+        
+    
+    
+            marker_779f3b9291d96aaef0f8f5931fe9f685.bindTooltip(
+                `<div>
+                     START: NHS Blood Centre (Filton)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_779f3b9291d96aaef0f8f5931fe9f685.setIcon(icon_26bcc5aeb5b8c47849cd2871f79387fc);
+            
+    
+            var marker_ef17d9502388a704580746c7e74e8051 = L.marker(
+                [51.51333333333333, -2.5652777777777778],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var div_icon_b4d61f31ceb3a792c8fa3b8be5b90605 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:green;\"\u003eStart: NHS Blood Centre (Filton)\u003c/div\u003e",
+  "iconSize": [200, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_ef17d9502388a704580746c7e74e8051.setIcon(div_icon_b4d61f31ceb3a792c8fa3b8be5b90605);
+            
+    
+            var marker_36d55fcd7842c4f4d426bca93d6a370d = L.marker(
+                [51.4125, -2.583055555555555],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_958458cf4a9c949b1c879bc4098fa152 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e74f9f1afd2ba5b5fb5cd31b180db56f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c0921286b9061ba8089f25f9a40983ac = $(`<div id="html_c0921286b9061ba8089f25f9a40983ac" style="width: 100.0%; height: 100.0%;">South Bristol NHS Community Hospital</div>`)[0];
+                popup_e74f9f1afd2ba5b5fb5cd31b180db56f.setContent(html_c0921286b9061ba8089f25f9a40983ac);
+            
+        
+
+        marker_36d55fcd7842c4f4d426bca93d6a370d.bindPopup(popup_e74f9f1afd2ba5b5fb5cd31b180db56f)
+        ;
+
+        
+    
+    
+            marker_36d55fcd7842c4f4d426bca93d6a370d.bindTooltip(
+                `<div>
+                     START: South Bristol NHS Community Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_36d55fcd7842c4f4d426bca93d6a370d.setIcon(icon_958458cf4a9c949b1c879bc4098fa152);
+            
+    
+            var marker_25c88d0b8cd98c2160c28d1d97ce7bbe = L.marker(
+                [51.4075, -2.583055555555555],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var div_icon_5f85460e8828480f826c67338f39ee40 = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:green;\"\u003eStart: South Bristol NHS Community Hospital\u003c/div\u003e",
+  "iconSize": [200, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_25c88d0b8cd98c2160c28d1d97ce7bbe.setIcon(div_icon_5f85460e8828480f826c67338f39ee40);
+            
+    
+            var marker_ea42da2319fab9709f31a4fdf944a69e = L.marker(
+                [51.50083333333333, -2.551944444444444],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_07040ccc879ba1e694a7698931d38558 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_311cffc9eef68142ad6ca1c762e8bc91 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bade7d7aa19c2df5576bc0850a43c01c = $(`<div id="html_bade7d7aa19c2df5576bc0850a43c01c" style="width: 100.0%; height: 100.0%;">UWE Health Tech Hub</div>`)[0];
+                popup_311cffc9eef68142ad6ca1c762e8bc91.setContent(html_bade7d7aa19c2df5576bc0850a43c01c);
+            
+        
+
+        marker_ea42da2319fab9709f31a4fdf944a69e.bindPopup(popup_311cffc9eef68142ad6ca1c762e8bc91)
+        ;
+
+        
+    
+    
+            marker_ea42da2319fab9709f31a4fdf944a69e.bindTooltip(
+                `<div>
+                     START: UWE Health Tech Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ea42da2319fab9709f31a4fdf944a69e.setIcon(icon_07040ccc879ba1e694a7698931d38558);
+            
+    
+            var marker_3c88893d0bd0c66b5c0cf26c99cfc827 = L.marker(
+                [51.49583333333333, -2.551944444444444],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var div_icon_f068c706b03a8224a150b2eb490768ae = L.divIcon({
+  "html": "\u003cdiv style=\"font-weight:bold; color:green;\"\u003eStart: UWE Health Tech Hub\u003c/div\u003e",
+  "iconSize": [200, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_3c88893d0bd0c66b5c0cf26c99cfc827.setIcon(div_icon_f068c706b03a8224a150b2eb490768ae);
+            
+    
+            var marker_4727a89897310232e44e81efd3460003 = L.marker(
+                [51.49583333333334, -2.591388888888889],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_e2609bf77ef1e409bfc01afee2af9e20 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_538873cca3786f9d3f9de2ee026de512 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_116d45e4a68eae95f2c465b609e1b1e7 = $(`<div id="html_116d45e4a68eae95f2c465b609e1b1e7" style="width: 100.0%; height: 100.0%;">Southmead Hospital</div>`)[0];
+                popup_538873cca3786f9d3f9de2ee026de512.setContent(html_116d45e4a68eae95f2c465b609e1b1e7);
+            
+        
+
+        marker_4727a89897310232e44e81efd3460003.bindPopup(popup_538873cca3786f9d3f9de2ee026de512)
+        ;
+
+        
+    
+    
+            marker_4727a89897310232e44e81efd3460003.bindTooltip(
+                `<div>
+                     DESTINATION: Southmead Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4727a89897310232e44e81efd3460003.setIcon(icon_e2609bf77ef1e409bfc01afee2af9e20);
+            
+    
+            var marker_6175da86cc904db5493758460a139d36 = L.marker(
+                [51.45805555555556, -2.5969444444444445],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_c8b31fb3e0aed94a22add6e77a874736 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_662efe9160653e111b0a56074366cb64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_060b02e4caea7474aea17e898a681798 = $(`<div id="html_060b02e4caea7474aea17e898a681798" style="width: 100.0%; height: 100.0%;">Bristol Royal Infirmary (BRI)</div>`)[0];
+                popup_662efe9160653e111b0a56074366cb64.setContent(html_060b02e4caea7474aea17e898a681798);
+            
+        
+
+        marker_6175da86cc904db5493758460a139d36.bindPopup(popup_662efe9160653e111b0a56074366cb64)
+        ;
+
+        
+    
+    
+            marker_6175da86cc904db5493758460a139d36.bindTooltip(
+                `<div>
+                     DESTINATION: Bristol Royal Infirmary (BRI)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6175da86cc904db5493758460a139d36.setIcon(icon_c8b31fb3e0aed94a22add6e77a874736);
+            
+    
+            var marker_6e2728b8b977db98cf183d696b075441 = L.marker(
+                [51.45888888888889, -2.5994444444444444],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_abb34ae0836916a3511931f112861982 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ad5dbb205b47f327acee0fb311ec4366 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9f7017de594ed0b2313968979b8cb083 = $(`<div id="html_9f7017de594ed0b2313968979b8cb083" style="width: 100.0%; height: 100.0%;">St Michael's Hospital</div>`)[0];
+                popup_ad5dbb205b47f327acee0fb311ec4366.setContent(html_9f7017de594ed0b2313968979b8cb083);
+            
+        
+
+        marker_6e2728b8b977db98cf183d696b075441.bindPopup(popup_ad5dbb205b47f327acee0fb311ec4366)
+        ;
+
+        
+    
+    
+            marker_6e2728b8b977db98cf183d696b075441.bindTooltip(
+                `<div>
+                     DESTINATION: St Michael's Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6e2728b8b977db98cf183d696b075441.setIcon(icon_abb34ae0836916a3511931f112861982);
+            
+    
+            var marker_8e9f872260610d1efbbdb0ade5cf14a7 = L.marker(
+                [51.47027777777778, -2.562222222222222],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_fa72ad0a42a84bbc66135921bc87a57a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2ce9c1532a35998bde11f619a4d01b57 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eba401dd9a1a3d1e7f3837952b6b08cb = $(`<div id="html_eba401dd9a1a3d1e7f3837952b6b08cb" style="width: 100.0%; height: 100.0%;">Eastville Medical Centre</div>`)[0];
+                popup_2ce9c1532a35998bde11f619a4d01b57.setContent(html_eba401dd9a1a3d1e7f3837952b6b08cb);
+            
+        
+
+        marker_8e9f872260610d1efbbdb0ade5cf14a7.bindPopup(popup_2ce9c1532a35998bde11f619a4d01b57)
+        ;
+
+        
+    
+    
+            marker_8e9f872260610d1efbbdb0ade5cf14a7.bindTooltip(
+                `<div>
+                     DESTINATION: Eastville Medical Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8e9f872260610d1efbbdb0ade5cf14a7.setIcon(icon_fa72ad0a42a84bbc66135921bc87a57a);
+            
+    
+            var marker_442c73f9caea6809c5e137f418ef86f7 = L.marker(
+                [51.47972222222222, -2.5266666666666664],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_c8473147ebe0c6a6576524aec1045aa5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eb6c16a9c90d4b3215922031c939847a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_29dd38c48834a017d1bbcbe58cd7f672 = $(`<div id="html_29dd38c48834a017d1bbcbe58cd7f672" style="width: 100.0%; height: 100.0%;">Fishponds Primary Care Centre</div>`)[0];
+                popup_eb6c16a9c90d4b3215922031c939847a.setContent(html_29dd38c48834a017d1bbcbe58cd7f672);
+            
+        
+
+        marker_442c73f9caea6809c5e137f418ef86f7.bindPopup(popup_eb6c16a9c90d4b3215922031c939847a)
+        ;
+
+        
+    
+    
+            marker_442c73f9caea6809c5e137f418ef86f7.bindTooltip(
+                `<div>
+                     DESTINATION: Fishponds Primary Care Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_442c73f9caea6809c5e137f418ef86f7.setIcon(icon_c8473147ebe0c6a6576524aec1045aa5);
+            
+    
+            var marker_4c55bda27ac2ee686d72968392fd1f94 = L.marker(
+                [51.458333333333336, -2.5975],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_16e815285bb6789bfb27c81fb32054ff = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b018c73eba089edff088a424fbe80aa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_34ed675e69f518a6e44f2cc25f607758 = $(`<div id="html_34ed675e69f518a6e44f2cc25f607758" style="width: 100.0%; height: 100.0%;">Bristol Haematology and Oncology Centre (BHOC)</div>`)[0];
+                popup_8b018c73eba089edff088a424fbe80aa.setContent(html_34ed675e69f518a6e44f2cc25f607758);
+            
+        
+
+        marker_4c55bda27ac2ee686d72968392fd1f94.bindPopup(popup_8b018c73eba089edff088a424fbe80aa)
+        ;
+
+        
+    
+    
+            marker_4c55bda27ac2ee686d72968392fd1f94.bindTooltip(
+                `<div>
+                     DESTINATION: Bristol Haematology and Oncology Centre (BHOC)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4c55bda27ac2ee686d72968392fd1f94.setIcon(icon_16e815285bb6789bfb27c81fb32054ff);
+            
+    
+            var marker_495713f14621770044673224eac24422 = L.marker(
+                [51.50333333333333, -2.4963888888888888],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_a5354883c1bad6e7e9e5753164cc66ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1dfa9174de4afa2eec9063aa18c37351 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_05118d21cadd99855b2f82aaa82ac9e4 = $(`<div id="html_05118d21cadd99855b2f82aaa82ac9e4" style="width: 100.0%; height: 100.0%;">Emersons Green NHS Treatment Centre</div>`)[0];
+                popup_1dfa9174de4afa2eec9063aa18c37351.setContent(html_05118d21cadd99855b2f82aaa82ac9e4);
+            
+        
+
+        marker_495713f14621770044673224eac24422.bindPopup(popup_1dfa9174de4afa2eec9063aa18c37351)
+        ;
+
+        
+    
+    
+            marker_495713f14621770044673224eac24422.bindTooltip(
+                `<div>
+                     DESTINATION: Emersons Green NHS Treatment Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_495713f14621770044673224eac24422.setIcon(icon_a5354883c1bad6e7e9e5753164cc66ca);
+            
+    
+            var marker_4d8447cda2ee0621a857422a9a4e4c04 = L.marker(
+                [51.4575, -2.571944444444444],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_6680703c81860e32e7c66acf5f33682f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf0eb960c9066b3e0284459cc7edd8b6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4492f89259eaa81daa3f3b9999bb4a38 = $(`<div id="html_4492f89259eaa81daa3f3b9999bb4a38" style="width: 100.0%; height: 100.0%;">Lawrence Hill Health Centre</div>`)[0];
+                popup_cf0eb960c9066b3e0284459cc7edd8b6.setContent(html_4492f89259eaa81daa3f3b9999bb4a38);
+            
+        
+
+        marker_4d8447cda2ee0621a857422a9a4e4c04.bindPopup(popup_cf0eb960c9066b3e0284459cc7edd8b6)
+        ;
+
+        
+    
+    
+            marker_4d8447cda2ee0621a857422a9a4e4c04.bindTooltip(
+                `<div>
+                     DESTINATION: Lawrence Hill Health Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4d8447cda2ee0621a857422a9a4e4c04.setIcon(icon_6680703c81860e32e7c66acf5f33682f);
+            
+    
+            var marker_b9d0dc6746efb689558d7bdf486b944a = L.marker(
+                [51.466944444444444, -2.589166666666667],
+                {
+}
+            ).addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+    
+            var icon_d1592516f176cce9e6439d703c1b024e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0c0946d7c18f02915e01abb5bb975d0c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8b9564538adab61219a4d0e2b096b3c6 = $(`<div id="html_8b9564538adab61219a4d0e2b096b3c6" style="width: 100.0%; height: 100.0%;">Montpelier Health Centre</div>`)[0];
+                popup_0c0946d7c18f02915e01abb5bb975d0c.setContent(html_8b9564538adab61219a4d0e2b096b3c6);
+            
+        
+
+        marker_b9d0dc6746efb689558d7bdf486b944a.bindPopup(popup_0c0946d7c18f02915e01abb5bb975d0c)
+        ;
+
+        
+    
+    
+            marker_b9d0dc6746efb689558d7bdf486b944a.bindTooltip(
+                `<div>
+                     DESTINATION: Montpelier Health Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b9d0dc6746efb689558d7bdf486b944a.setIcon(icon_d1592516f176cce9e6439d703c1b024e);
+            
+    
+            var marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_341e9edadbbf755b37be9585fddf17b7 = L.marker(
+                [51.51833333333333, -2.5652777777777778],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_896debc978c53f53ceeddaea564c936b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b7ed49dfe763835bea2779dfb9e50b28 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_01b3ab782a79a4ada818b1b6d3ef30b6 = $(`<div id="html_01b3ab782a79a4ada818b1b6d3ef30b6" style="width: 100.0%; height: 100.0%;">NHS Blood Centre (Filton)</div>`)[0];
+                popup_b7ed49dfe763835bea2779dfb9e50b28.setContent(html_01b3ab782a79a4ada818b1b6d3ef30b6);
+            
+        
+
+        marker_341e9edadbbf755b37be9585fddf17b7.bindPopup(popup_b7ed49dfe763835bea2779dfb9e50b28)
+        ;
+
+        
+    
+    
+            marker_341e9edadbbf755b37be9585fddf17b7.bindTooltip(
+                `<div>
+                     Start: NHS Blood Centre (Filton)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_341e9edadbbf755b37be9585fddf17b7.setIcon(icon_896debc978c53f53ceeddaea564c936b);
+            
+    
+            var marker_3f8e0aa2ee83963ddc89256cb4b66240 = L.marker(
+                [51.4125, -2.583055555555555],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_ea009118aa62bbcf60c870ef92dca8ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5c083a4c113e6170922565ff341e10c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ff115227e0ad7728c7439cffe7eddc5b = $(`<div id="html_ff115227e0ad7728c7439cffe7eddc5b" style="width: 100.0%; height: 100.0%;">South Bristol NHS Community Hospital</div>`)[0];
+                popup_5c083a4c113e6170922565ff341e10c1.setContent(html_ff115227e0ad7728c7439cffe7eddc5b);
+            
+        
+
+        marker_3f8e0aa2ee83963ddc89256cb4b66240.bindPopup(popup_5c083a4c113e6170922565ff341e10c1)
+        ;
+
+        
+    
+    
+            marker_3f8e0aa2ee83963ddc89256cb4b66240.bindTooltip(
+                `<div>
+                     Start: South Bristol NHS Community Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3f8e0aa2ee83963ddc89256cb4b66240.setIcon(icon_ea009118aa62bbcf60c870ef92dca8ab);
+            
+    
+            var marker_f29c1102bb380a61ff87ac2632c5625d = L.marker(
+                [51.50083333333333, -2.551944444444444],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_8af880f52ef255d64f794e0939ec503c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ce0d8c0c5bb4edaf88fd65768d307cc5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef9d00728e682032a683a8425d1bfb2c = $(`<div id="html_ef9d00728e682032a683a8425d1bfb2c" style="width: 100.0%; height: 100.0%;">UWE Health Tech Hub</div>`)[0];
+                popup_ce0d8c0c5bb4edaf88fd65768d307cc5.setContent(html_ef9d00728e682032a683a8425d1bfb2c);
+            
+        
+
+        marker_f29c1102bb380a61ff87ac2632c5625d.bindPopup(popup_ce0d8c0c5bb4edaf88fd65768d307cc5)
+        ;
+
+        
+    
+    
+            marker_f29c1102bb380a61ff87ac2632c5625d.bindTooltip(
+                `<div>
+                     Start: UWE Health Tech Hub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f29c1102bb380a61ff87ac2632c5625d.setIcon(icon_8af880f52ef255d64f794e0939ec503c);
+            
+    
+            var marker_fd908194e23401b0e3c65160f589186a = L.marker(
+                [51.49583333333334, -2.591388888888889],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_81a2e83baa9e42500d7f279b7216e7ee = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_28781cf138c4f3cc8f1831106d76d079 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fd654b6284eb3c63365f0acb78a863b8 = $(`<div id="html_fd654b6284eb3c63365f0acb78a863b8" style="width: 100.0%; height: 100.0%;">Southmead Hospital</div>`)[0];
+                popup_28781cf138c4f3cc8f1831106d76d079.setContent(html_fd654b6284eb3c63365f0acb78a863b8);
+            
+        
+
+        marker_fd908194e23401b0e3c65160f589186a.bindPopup(popup_28781cf138c4f3cc8f1831106d76d079)
+        ;
+
+        
+    
+    
+            marker_fd908194e23401b0e3c65160f589186a.bindTooltip(
+                `<div>
+                     Destination: Southmead Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fd908194e23401b0e3c65160f589186a.setIcon(icon_81a2e83baa9e42500d7f279b7216e7ee);
+            
+    
+            var marker_714f6fdc6ecc9dcb40a3af862e0473d9 = L.marker(
+                [51.45805555555556, -2.5969444444444445],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_8c8542f0f2b1656f1428495565967083 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5461f3ccc1f5c5d7b33cfb89ef1c4e1f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fa232a648c574d2af9c084df8f2c576c = $(`<div id="html_fa232a648c574d2af9c084df8f2c576c" style="width: 100.0%; height: 100.0%;">Bristol Royal Infirmary (BRI)</div>`)[0];
+                popup_5461f3ccc1f5c5d7b33cfb89ef1c4e1f.setContent(html_fa232a648c574d2af9c084df8f2c576c);
+            
+        
+
+        marker_714f6fdc6ecc9dcb40a3af862e0473d9.bindPopup(popup_5461f3ccc1f5c5d7b33cfb89ef1c4e1f)
+        ;
+
+        
+    
+    
+            marker_714f6fdc6ecc9dcb40a3af862e0473d9.bindTooltip(
+                `<div>
+                     Destination: Bristol Royal Infirmary (BRI)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_714f6fdc6ecc9dcb40a3af862e0473d9.setIcon(icon_8c8542f0f2b1656f1428495565967083);
+            
+    
+            var marker_6da19d85d016a058f9bef2975f91fa0f = L.marker(
+                [51.45888888888889, -2.5994444444444444],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_de6b6b68b6279589a6a8fb907a418c99 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_95f734f6a286fee10ea54ab49936ac7c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_763cfbbae65b6aca975cdc845350ab92 = $(`<div id="html_763cfbbae65b6aca975cdc845350ab92" style="width: 100.0%; height: 100.0%;">St Michael's Hospital</div>`)[0];
+                popup_95f734f6a286fee10ea54ab49936ac7c.setContent(html_763cfbbae65b6aca975cdc845350ab92);
+            
+        
+
+        marker_6da19d85d016a058f9bef2975f91fa0f.bindPopup(popup_95f734f6a286fee10ea54ab49936ac7c)
+        ;
+
+        
+    
+    
+            marker_6da19d85d016a058f9bef2975f91fa0f.bindTooltip(
+                `<div>
+                     Destination: St Michael's Hospital
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6da19d85d016a058f9bef2975f91fa0f.setIcon(icon_de6b6b68b6279589a6a8fb907a418c99);
+            
+    
+            var marker_113fbcf7a0b9cc155a07681c41e88127 = L.marker(
+                [51.47027777777778, -2.562222222222222],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_3753017129cdb7cac1644702b2b40537 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b2e378a516cf12cfb712657568c14d5b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b7fd1923972975bd9bdffafb8ec80001 = $(`<div id="html_b7fd1923972975bd9bdffafb8ec80001" style="width: 100.0%; height: 100.0%;">Eastville Medical Centre</div>`)[0];
+                popup_b2e378a516cf12cfb712657568c14d5b.setContent(html_b7fd1923972975bd9bdffafb8ec80001);
+            
+        
+
+        marker_113fbcf7a0b9cc155a07681c41e88127.bindPopup(popup_b2e378a516cf12cfb712657568c14d5b)
+        ;
+
+        
+    
+    
+            marker_113fbcf7a0b9cc155a07681c41e88127.bindTooltip(
+                `<div>
+                     Destination: Eastville Medical Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_113fbcf7a0b9cc155a07681c41e88127.setIcon(icon_3753017129cdb7cac1644702b2b40537);
+            
+    
+            var marker_88d92069f5f6d9f6e480fccae57b85c5 = L.marker(
+                [51.47972222222222, -2.5266666666666664],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_0be0960f9aece1ca13147ce9c24add58 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6b72db7cfb9a0b274ddb40cae47a1e1b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b038d13d707d253e28dbd4c6f43d5e6d = $(`<div id="html_b038d13d707d253e28dbd4c6f43d5e6d" style="width: 100.0%; height: 100.0%;">Fishponds Primary Care Centre</div>`)[0];
+                popup_6b72db7cfb9a0b274ddb40cae47a1e1b.setContent(html_b038d13d707d253e28dbd4c6f43d5e6d);
+            
+        
+
+        marker_88d92069f5f6d9f6e480fccae57b85c5.bindPopup(popup_6b72db7cfb9a0b274ddb40cae47a1e1b)
+        ;
+
+        
+    
+    
+            marker_88d92069f5f6d9f6e480fccae57b85c5.bindTooltip(
+                `<div>
+                     Destination: Fishponds Primary Care Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_88d92069f5f6d9f6e480fccae57b85c5.setIcon(icon_0be0960f9aece1ca13147ce9c24add58);
+            
+    
+            var marker_8ac3c5b6c978716b7826dbf464891a31 = L.marker(
+                [51.458333333333336, -2.5975],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_48bfaaa6d8b0d0c09a86d491ff500130 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a97bc023eadbf39809589235e704e56a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_83fd3a9031cbb5282afe7dd061d555c9 = $(`<div id="html_83fd3a9031cbb5282afe7dd061d555c9" style="width: 100.0%; height: 100.0%;">Bristol Haematology and Oncology Centre (BHOC)</div>`)[0];
+                popup_a97bc023eadbf39809589235e704e56a.setContent(html_83fd3a9031cbb5282afe7dd061d555c9);
+            
+        
+
+        marker_8ac3c5b6c978716b7826dbf464891a31.bindPopup(popup_a97bc023eadbf39809589235e704e56a)
+        ;
+
+        
+    
+    
+            marker_8ac3c5b6c978716b7826dbf464891a31.bindTooltip(
+                `<div>
+                     Destination: Bristol Haematology and Oncology Centre (BHOC)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8ac3c5b6c978716b7826dbf464891a31.setIcon(icon_48bfaaa6d8b0d0c09a86d491ff500130);
+            
+    
+            var marker_6be8b4622f66d0400df336a0116094da = L.marker(
+                [51.50333333333333, -2.4963888888888888],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_d8b54dfd28dfb3d1ac4b6577abc53610 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bfcee681643642d738a16bd5789eb36b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b36886afcb5007744f5b11aff92bfd8 = $(`<div id="html_3b36886afcb5007744f5b11aff92bfd8" style="width: 100.0%; height: 100.0%;">Emersons Green NHS Treatment Centre</div>`)[0];
+                popup_bfcee681643642d738a16bd5789eb36b.setContent(html_3b36886afcb5007744f5b11aff92bfd8);
+            
+        
+
+        marker_6be8b4622f66d0400df336a0116094da.bindPopup(popup_bfcee681643642d738a16bd5789eb36b)
+        ;
+
+        
+    
+    
+            marker_6be8b4622f66d0400df336a0116094da.bindTooltip(
+                `<div>
+                     Destination: Emersons Green NHS Treatment Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6be8b4622f66d0400df336a0116094da.setIcon(icon_d8b54dfd28dfb3d1ac4b6577abc53610);
+            
+    
+            var marker_537709a77102352e1cd7940e969da03a = L.marker(
+                [51.4575, -2.571944444444444],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_d3a44e19b4de942933a4c60170182f95 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bfffeeb2f8ecfa3f7de8e5d652ed2a8e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3212a6cab3300080b942824b5a199332 = $(`<div id="html_3212a6cab3300080b942824b5a199332" style="width: 100.0%; height: 100.0%;">Lawrence Hill Health Centre</div>`)[0];
+                popup_bfffeeb2f8ecfa3f7de8e5d652ed2a8e.setContent(html_3212a6cab3300080b942824b5a199332);
+            
+        
+
+        marker_537709a77102352e1cd7940e969da03a.bindPopup(popup_bfffeeb2f8ecfa3f7de8e5d652ed2a8e)
+        ;
+
+        
+    
+    
+            marker_537709a77102352e1cd7940e969da03a.bindTooltip(
+                `<div>
+                     Destination: Lawrence Hill Health Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_537709a77102352e1cd7940e969da03a.setIcon(icon_d3a44e19b4de942933a4c60170182f95);
+            
+    
+            var marker_4f492a7419ce9110876367f25c49533e = L.marker(
+                [51.466944444444444, -2.589166666666667],
+                {
+}
+            ).addTo(marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054);
+        
+    
+            var icon_741dbd3f2571c9d188bbabfb84ab9b97 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "hospital",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_be75e9869413e3b5efd1f824a9e4e8c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_28d569b44e1d784e3df721121fd51a49 = $(`<div id="html_28d569b44e1d784e3df721121fd51a49" style="width: 100.0%; height: 100.0%;">Montpelier Health Centre</div>`)[0];
+                popup_be75e9869413e3b5efd1f824a9e4e8c6.setContent(html_28d569b44e1d784e3df721121fd51a49);
+            
+        
+
+        marker_4f492a7419ce9110876367f25c49533e.bindPopup(popup_be75e9869413e3b5efd1f824a9e4e8c6)
+        ;
+
+        
+    
+    
+            marker_4f492a7419ce9110876367f25c49533e.bindTooltip(
+                `<div>
+                     Destination: Montpelier Health Centre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4f492a7419ce9110876367f25c49533e.setIcon(icon_741dbd3f2571c9d188bbabfb84ab9b97);
+            
+    
+            marker_cluster_6e4aba22d1888a8d8b7f27dbeec48054.addTo(map_15ff1a93f868b444b9b40bf961c458b9);
+        
+</script>
+</html>
