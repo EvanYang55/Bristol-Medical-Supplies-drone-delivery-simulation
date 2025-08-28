@@ -8,7 +8,7 @@ from temdecrease import battery_degradation
 
 
 # Maximum allowed payload weight (kg)
-MAX_PAYLOAD = 15.06
+MAX_PAYLOAD = 45.03
 # Location name mapping
 LOCATION_NAMES = {
     # Target points
@@ -178,4 +178,5 @@ def main():
         print(f"Return Value 4 (Total Segments): {total_segments}")
 
 if __name__ == "__main__":
+
     main()
